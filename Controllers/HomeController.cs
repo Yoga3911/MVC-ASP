@@ -70,36 +70,6 @@ namespace MVC_ASP.Controllers
             return View();
         }
 
-        public void GetUserById(int id)
-        {
-            ds = new DataSet();
-            param = new NpgsqlParameter[] { 
-            // Parameter untuk id
-            new NpgsqlParameter("@id", id)
-        };
-
-            query = "SELECT * FROM users WHERE id = @id;";
-            helper.DBConn(ref ds, query, param);
-
-
-            List<UserModel> users = new List<UserModel>();
-
-            var data = ds.Tables[0];
-
-            foreach (DataRow u in data.Rows)
-            {
-                UserModel user = new UserModel();
-                user.Id = u.Field<Int32>(data.Columns[0]);
-                user.Username = u.Field<string>(data.Columns[1]);
-                users.Add(user);
-            }
-
-            foreach (UserModel user in users)
-            {
-                Console.WriteLine($"ID: {user.Id} -- Username: {user.Username}");
-            }
-        }
-
         public IActionResult InsertUser(UserModel user)
         {
             ds = new DataSet();
