@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{
+        var data = (List<UserModel>)ViewData["data"]!;
+        foreach (var user in data)
+        {
+                <tr>
+                  <th scope="row">@user.Id</th>
+                  <td>@user.Username</td>
+                  <td>
+                        @Html.ActionLink("Ubah", "Edit", new { Id = @user.Id, Username = @user.Username }, new { @class = "btn btn-success" })
+                  </td>
+                  <td>
+                        @Html.ActionLink("Hapus", "DeleteUser", new { Id = @user.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Apakah anda yakin ingin menghapus user ini?')" })
+                  </td>
+                </tr>
+        }
+    }
+    
+  </tbody>
+</table>

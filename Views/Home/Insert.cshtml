@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Insert User";
+}
+<h1>@ViewData["Title"]</h1>
+
+@model MVC_ASP.Models.UserModel
+<form asp-controller="Home" asp-action="InsertUser">
+  <div class="form-group">
+    <label asp-for="Id">ID</label>
+    <input asp-for="Id" type="text" class="form-control" id="Id">
+    <label asp-for="Username">Username</label>
+    <input asp-for="Username" type="text" class="form-control" id="Username">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
